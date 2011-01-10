@@ -51,9 +51,9 @@ module EchoNest
       end    
     end
     
-    def self.find(query, options={})
-      options = {:query => query}.merge(options)
-      request = ApiRequest.new("search_artists", options)
+    def self.find(name, options={})
+      options = {:name => name}.merge(options)
+      request = ApiRequest.new("artist/search", options)
       results = Xml::ArtistSearchResults.parse(request.fetch)
       results.artists
     end
